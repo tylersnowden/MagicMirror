@@ -2,13 +2,7 @@ web:
   build: .
   volumes:
     - "./:/home/app/mirror"
+    - /home/app/mirror/node_modules
   ports:
     - "8080:8080"
   command: ["node", "serveronly"]
-
-node:
-  image: node:latest 
-  volumes_from:
-    - web 
-  working_dir: /home/app/mirror
-  command: ["npm", "install", "--no-bin-links"]
